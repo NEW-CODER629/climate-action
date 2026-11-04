@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClimateAction | Green Community</title>
+<style>
+:root{--green:#176b50;--dark:#104b3a;--pale:#eaf5ed;--ink:#17352d;--muted:#60736b;--cream:#fbfaf5;--line:#dce8df}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 Arial,sans-serif}
+.container{width:min(1050px,92%);margin:auto}header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:15px 0;flex-wrap:wrap}.brand{font-size:1.15rem;font-weight:800}.brand span{color:var(--green)}
+nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--muted);font-weight:bold;text-decoration:none;font-size:.92rem}
+.hero{padding:55px 0;background:linear-gradient(120deg,#e8f5e9,#fbfaf5)}h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.08;margin:10px 0}h1 span{color:var(--green)}
+p{color:var(--muted)}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:.78rem}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:25px 0}.stat,.panel,.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:0 8px 24px #17352d0b}
+.stat strong{display:block;font-size:2.3rem;color:var(--green);line-height:1.2}.stat span{color:var(--muted);font-weight:bold}
+section{padding:42px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel h2{margin-top:0}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:bold;font-size:.92rem}.field input,.field textarea{width:100%;padding:11px;border:1px solid #cbd9cf;border-radius:8px;font:inherit;background:white}
+button{border:0;border-radius:9px;padding:11px 16px;background:var(--green);color:white;font-weight:bold;cursor:pointer}button:hover{background:var(--dark)}button.secondary{background:#e7f2e9;color:var(--dark)}button.danger{background:#9d3b35}.button-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.notice{background:#fff7df;border:1px solid #f0d99a;color:#604b1c;border-radius:10px;padding:12px;font-size:.9rem}
+.status{display:inline-block;padding:4px 9px;border-radius:99px;background:#fff0cf;color:#78540b;font-size:.78rem;font-weight:bold}.status.approved{background:#e1f3e5;color:#17633d}
+.submission{border-top:1px solid var(--line);padding:14px 0}.submission:first-child{border-top:0}.submission h3{margin:0 0 4px}.submission small{color:var(--muted)}
+.empty{padding:18px;background:#f5f8f4;border-radius:10px;color:var(--muted)}
+footer{background:#10392d;color:#e4efe7;padding:25px 0;margin-top:35px}footer p{color:#d0e1d6}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.nav{align-items:flex-start;flex-direction:column}nav{gap:12px}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><div class="brand">🌱 Climate<span>Action</span></div><nav><a href="#community">Community</a><a href="#join">Join / Login</a><a href="#submit">Submit a tree</a><a href="#review">Review</a></nav></div></header>
+<main>
+<div class="hero"><div class="container">
+<span class="eyebrow">Understand · Act · Protect</span>
+<h1>One community.<br><span>A greener future.</span></h1>
+<p>Join people taking action for the planet. Plant a tree, share a video for review, and help the community keep a record of verified planting activities.</p>
+<div class="stats" id="community">
+<div class="stat"><strong id="memberCount">0</strong><span>Community members</span></div>
+<div class="stat"><strong id="treeCount">0</strong><span>Verified trees planted</span></div>
+</div>
+<p><small>Counts on this demo are stored only in this browser. They are not live public totals.</small></p>
+</div></div>
+
+<section id="join"><div class="container grid">
+<div class="panel">
+<h2>👤 Join the community</h2>
+<p>Create a demo profile to try the member features.</p>
+<div class="field"><label for="memberName">Your display name</label><input id="memberName" maxlength="35" placeholder="Enter a nickname"></div>
+<div class="field"><label for="memberEmail">Email (demo only)</label><input id="memberEmail" type="email" placeholder="name@example.com"></div>
+<div class="button-row"><button id="registerBtn">Create demo account</button><button class="secondary" id="loginBtn">Log in on this device</button><button class="secondary" id="logoutBtn" hidden>Log out</button></div>
+<p id="accountMessage" aria-live="polite"></p>
+</div>
+<div class="panel">
+<h2>🌳 How tree verification works</h2>
+<ol>
+<li>Join or log in to your account.</li>
+<li>Plant a tree and record a short video of the activity.</li>
+<li>Submit the video and basic planting details.</li>
+<li>A reviewer checks the submission.</li>
+<li>Only approved submissions add to the verified tree total.</li>
+</ol>
+<div class="notice">Please get permission before recording other people. Avoid showing your home address, school details, phone number, or other private information in a video.</div>
+</div>
+</div></section>
+
+<section id="submit"><div class="container"><div class="panel">
+<h2>📹 Submit your tree-planting video</h2>
+<p>You must be logged in on this device to make a demo submission.</p>
+<div class="field"><label for="treeType">What did you plant?</label><input id="treeType" maxlength="60" placeholder="Example: Neem sapling"></div>
+<div class="field"><label for="plantLocation">General area (not your exact address)</label><input id="plantLocation" maxlength="60" placeholder="Example: Community park, Patna"></div>
+<div class="field"><label for="plantVideo">Choose a video</label><input id="plantVideo" type="file" accept="video/*"></div>
+<div id="videoInfo" class="small"></div>
+<div class="button-row"><button id="submitBtn">Submit for review</button></div>
+<p id="submitMessage" aria-live="polite"></p>
+<div class="notice">Demo limitation: the selected video is not uploaded to a server. This page only records a local demo submission in your browser.</div>
+</div></div></section>
+
+<section id="review"><div class="container grid">
+<div class="panel"><h2>🗂️ My submissions</h2><div id="mySubmissions" class="empty">Log in to see your submissions.</div></div>
+<div class="panel"><h2>🛡️ Demo review desk</h2><p>For demonstration only. In a real website, only authorised reviewers should be able to approve videos after checking them.</p><div id="reviewList" class="empty">No submissions waiting for review.</div></div>
+</div></section>
+</main>
+<footer><div class="container"><strong>🌱 ClimateAction — Every verified effort counts.</strong><p>This is a learning prototype, not a live public platform.</p></div></footer>
+
+<script>
+const STORE_KEY = 'climateActionDemoV1';
+const $ = id => document.getElementById(id);
+let data = loadData();
+let currentMemberId = sessionStorage.getItem('climateDemoMember') || '';
+
+function loadData(){
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {members:[], submissions:[]}; }
+  catch { return {members:[], submissions:[]}; }
+}
+function save(){ localStorage.setItem(STORE_KEY, JSON.stringify(data)); render(); }
+function currentMember(){ return data.members.find(m => m.id === currentMemberId); }
+function safeText(value){ return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+function render(){
+  $('memberCount').textContent = data.members.length;
+  $('treeCount').textContent = data.submissions.filter(s => s.status === 'approved').length;
+  const member = currentMember();
+  $('accountMessage').textContent = member ? `Logged in as ${member.name}.` : 'You are not logged in.';
+  $('logoutBtn').hidden = !member;
+  $('registerBtn').disabled = !!member;
+  $('loginBtn').disabled = !!member;
+  if(!member){ $('mySubmissions').className='empty'; $('mySubmissions').textContent='Log in to see your submissions.'; }
+  else {
+    const mine = data.submissions.filter(s => s.memberId === member.id);
+    $('mySubmissions').className='';
+    $('mySubmissions').innerHTML = mine.length ? mine.map(s => `<div class="submission"><h3>${safeText(s.tree)}</h3><small>${safeText(s.area)} · ${safeText(s.fileName)}</small><p><span class="status ${s.status}">${s.status === 'approved' ? 'Approved' : s.status === 'rejected' ? 'Needs changes' : 'Pending review'}</span></p></div>`).join('') : '<div class="empty">You have not submitted a planting video yet.</div>';
+  }
+  const pending = data.submissions.filter(s => s.status === 'pending');
+  $('reviewList').className='';
+  $('reviewList').innerHTML = pending.length ? pending.map(s => `<div class="submission"><h3>${safeText(s.tree)}</h3><small>By ${safeText((data.members.find(m=>m.id===s.memberId)||{}).name || 'Member')} · ${safeText(s.area)} · ${safeText(s.fileName)}</small><div class="button-row"><button data-approve="${s.id}">Approve (demo)</button><button class="danger" data-reject="${s.id}">Request changes</button></div></div>`).join('') : '<div class="empty">No submissions waiting for review.</div>';
+}
+$('registerBtn').addEventListener('click', () => {
+  if(currentMember()) return;
+  const name = $('memberName').value.trim(), email = $('memberEmail').value.trim().toLowerCase();
+  if(name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ $('accountMessage').textContent='Enter a display name and a valid-looking email for this demo.'; return; }
+  if(data.members.some(m=>m.email===email)){ $('accountMessage').textContent='That demo email already has an account. Use Log in.'; return; }
+  const member={id:crypto.randomUUID ? crypto.randomUUID() : String(Date.now()+Math.random()),name,email};
+  data.members.push(member); currentMemberId=member.id; sessionStorage.setItem('climateDemoMember',currentMemberId); save();
+});
+$('loginBtn').addEventListener('click', () => {
+  const email=$('memberEmail').value.trim().toLowerCase();
+  const member=data.members.find(m=>m.email===email);
+  if(!member){ $('accountMessage').textContent='No demo account found on this device. Create one first.'; return; }
+  currentMemberId=member.id; sessionStorage.setItem('climateDemoMember',currentMemberId); render();
+});
+$('logoutBtn').addEventListener('click',()=>{currentMemberId='';sessionStorage.removeItem('climateDemoMember');render();});
+$('plantVideo').addEventListener('change',()=>{
+  const f=$('plantVideo').files[0];
+  $('videoInfo').textContent=f ? `${f.name} selected (${(f.size/1024/1024).toFixed(1)} MB). It will not leave this device.` : '';
+});
+$('submitBtn').addEventListener('click',()=>{
+  const member=currentMember(), tree=$('treeType').value.trim(), area=$('plantLocation').value.trim(), file=$('plantVideo').files[0];
+  if(!member){$('submitMessage').textContent='Please create a demo account or log in first.';return;}
+  if(!tree || !area || !file){$('submitMessage').textContent='Please complete the tree details and choose a video.';return;}
+  if(!file.type.startsWith('video/')){$('submitMessage').textContent='Please choose a video file.';return;}
+  if(file.size > 100*1024*1024){$('submitMessage').textContent='For this demo, choose a video smaller than 100 MB.';return;}
+  data.submissions.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),memberId:member.id,tree,area,fileName:file.name,status:'pending'});
+  save(); $('submitMessage').textContent='Demo submission saved as Pending review.';$('treeType').value='';$('plantLocation').value='';$('plantVideo').value='';$('videoInfo').textContent='';
+});
+$('reviewList').addEventListener('click',e=>{
+  const approve=e.target.dataset.approve, reject=e.target.dataset.reject;
+  const id=approve||reject;if(!id)return;
+  const sub=data.submissions.find(s=>s.id===id);if(!sub)return;
+  sub.status=approve?'approved':'rejected';save();
+});
+render();
+</script>
+</body>
+</html>
